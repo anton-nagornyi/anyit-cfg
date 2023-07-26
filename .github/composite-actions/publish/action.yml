@@ -59,11 +59,12 @@ runs:
       working-directory: ${{inputs.working-directory}}
       shell: bash
       run: |
+        echo "yarn publish --non-interactive --new-version ${{ env.VERSION }}"
         mv ../../package.json ../../_package.json
         cp ../../yarn.lock ./yarn.lock
         yarn
         yarn build
-        yarn publish --non-interactive --new-version ${{ env.VERSION }}
+        npm publish
         mv ../../_package.json ../../package.json
         rm -rf ./yarn.lock
         yarn info ${{ env.PACKAGE_NAME }}@${{ env.VERSION }}

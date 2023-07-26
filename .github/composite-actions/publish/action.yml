@@ -65,7 +65,7 @@ runs:
         NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
         echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
-        echo '@anyit:registry=https://npm.pkg.github.com/' >> .npmrc
+        echo '@anyit:registry=https://registry.npmjs.org/' >> .npmrc
         npm config set --global '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
 
     - name: Build & Publish

@@ -1,7 +1,8 @@
 {
   "name": "@anyit/cfg-interval-trigger",
   "author": "Anton Nagornyi",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "homepage": "https://github.com/anton-nagornyi/anyit-cfg#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -14,6 +15,14 @@
   },
   "dependencies": {
     "@anyit/cfg": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anton-nagornyi/anyit-cfg",
+    "directory": "packages/triggers/interval-trigger"
+  },
+  "bugs": {
+    "url": "https://github.com/anton-nagornyi/anyit-cfg/issues"
   },
   "files": [
     "dist/*.js",

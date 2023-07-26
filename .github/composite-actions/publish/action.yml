@@ -79,7 +79,7 @@ runs:
         cp ../../yarn.lock ./yarn.lock
         yarn
         yarn build
-        yarn publish --new-version ${{ env.VERSION }}
+        yarn publish --new-version ${{ env.VERSION }} --access=public
         mv ../../_package.json ../../package.json
         rm -rf ./yarn.lock
         yarn info ${{ env.PACKAGE_NAME }}@${{ env.VERSION }}

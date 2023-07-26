@@ -63,7 +63,7 @@ runs:
       shell: bash
       run: |
         echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
-        echo '@BattleFly-Game:registry=https://npm.pkg.github.com/' >> .npmrc
+        echo '@anyit:registry=https://npm.pkg.github.com/' >> .npmrc
         npm config set --global '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
 
     - name: Build & Publish

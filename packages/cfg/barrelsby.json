@@ -1,0 +1,6 @@
+{
+  "directory": "./",
+  "singleQuotes": true,
+  "delete": true,
+  "exclude": ["tests", "rollup", "src/event-emitter.ts", "src/settings-object.ts", "src/deep-equal.ts"]
+}

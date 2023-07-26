@@ -1,0 +1,6 @@
+{
+  "directory": "./",
+  "singleQuotes": true,
+  "delete": true,
+  "exclude": ["tests", "rollup"]
+}

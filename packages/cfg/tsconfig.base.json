@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "stripInternal": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist/@types"
+  },
+  "rootDir": "./src",
+  "allowJs": false,
+  "isolatedModules": true,
+  "files": [
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

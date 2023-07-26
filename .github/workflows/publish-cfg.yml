@@ -1,0 +1,13 @@
+name: Publish Cfg
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: publish
+        uses: anton-nagornyi/anyit-cfg/.github/composite-actions/publish@main
+        with:
+          working-directory: packages/cfg

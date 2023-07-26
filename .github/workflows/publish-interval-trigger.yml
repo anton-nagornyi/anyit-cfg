@@ -11,3 +11,4 @@ jobs:
         uses: anton-nagornyi/anyit-cfg/.github/composite-actions/publish@main
         with:
           working-directory: packages/triggers/interval-trigger
+          npm-auth-token: ${{ secrets.NPM_AUTH_TOKEN }}

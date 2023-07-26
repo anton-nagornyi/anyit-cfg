@@ -5,6 +5,9 @@ inputs:
   working-directory:
     description: "Working directory"
     required: true
+  npm-auth-token:
+    description: "NPM_AUTH_TOKEN"
+    required: true
 
 runs:
   using: "composite"
@@ -54,17 +57,25 @@ runs:
       run: |
         echo "VERSION=$(node -pe "require('./package.json')['version']")" >> $GITHUB_ENV
 
+    - name: Create .npmrc
+      id: create-npmrc
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      run: |
+        echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
+        echo '@BattleFly-Game:registry=https://npm.pkg.github.com/' >> .npmrc
+        npm config set --global '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
+
     - name: Build & Publish
       id: run-yarn-publish
       working-directory: ${{inputs.working-directory}}
       shell: bash
       run: |
-        echo "yarn publish --non-interactive --new-version ${{ env.VERSION }}"
         mv ../../package.json ../../_package.json
         cp ../../yarn.lock ./yarn.lock
         yarn
         yarn build
-        npm publish
+        yarn publish --new-version ${{ env.VERSION }}
         mv ../../_package.json ../../package.json
         rm -rf ./yarn.lock
         yarn info ${{ env.PACKAGE_NAME }}@${{ env.VERSION }}

@@ -61,6 +61,8 @@ runs:
       id: create-npmrc
       working-directory: ${{inputs.working-directory}}
       shell: bash
+      env:
+        NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
         echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
         echo '@anyit:registry=https://npm.pkg.github.com/' >> .npmrc
@@ -70,6 +72,8 @@ runs:
       id: run-yarn-publish
       working-directory: ${{inputs.working-directory}}
       shell: bash
+      env:
+        NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
         mv ../../package.json ../../_package.json
         cp ../../yarn.lock ./yarn.lock

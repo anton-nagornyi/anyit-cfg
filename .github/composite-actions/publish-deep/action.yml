@@ -1,0 +1,85 @@
+name: Publish Deep
+description: "Run publish"
+
+inputs:
+  working-directory:
+    description: "Working directory"
+    required: true
+  npm-auth-token:
+    description: "NPM_AUTH_TOKEN"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.15.0
+
+    - name: Lint
+      id: check-eslint
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      run: |
+        mv ../../../package.json ../../../_package.json
+        cp ../../../yarn.lock ./yarn.lock
+        yarn
+        yarn lint
+        mv ../../../_package.json ../../../package.json
+        rm -rf ./yarn.lock
+
+    - name: Test
+      id: check-tests
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      run: |
+        mv ../../../package.json ../../../_package.json
+        cp ../../../yarn.lock ./yarn.lock
+        yarn
+        yarn test
+        mv ../../../_package.json ../../../package.json
+        rm -rf ./yarn.lock
+        
+    - name: Read Package Name from package.json
+      id: package-json-name
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      run: |
+        echo "PACKAGE_NAME=$(node -pe "require('./package.json')['name']")" >> $GITHUB_ENV
+
+    - name: Read Version from package.json
+      id: package-json-version
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      run: |
+        echo "VERSION=$(node -pe "require('./package.json')['version']")" >> $GITHUB_ENV
+
+    - name: Create .npmrc
+      id: create-npmrc
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      env:
+        NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
+      run: |
+        echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
+        echo '@anyit:registry=https://registry.npmjs.org/' >> .npmrc
+        npm config set --global '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
+
+    - name: Build & Publish
+      id: run-yarn-publish
+      working-directory: ${{inputs.working-directory}}
+      shell: bash
+      env:
+        NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
+      run: |
+        mv ../../../package.json ../../../_package.json
+        cp ../../../yarn.lock ./yarn.lock
+        yarn
+        yarn build
+        yarn publish --new-version ${{ env.VERSION }} --access=public
+        mv ../../../_package.json ../../../package.json
+        rm -rf ./yarn.lock
+        yarn info ${{ env.PACKAGE_NAME }}@${{ env.VERSION }}

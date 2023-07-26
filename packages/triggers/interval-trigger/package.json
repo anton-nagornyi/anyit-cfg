@@ -8,7 +8,7 @@
   "scripts": {
     "build": "node_modules/.bin/rimraf ./dist && barrelsby -c ./barrelsby.json && rollup -c && rimraf ./dist/@types",
     "test": "node_modules/.bin/jest",
-    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+    "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "bump-version": "yarn version --patch --no-git-tag-version"
   },

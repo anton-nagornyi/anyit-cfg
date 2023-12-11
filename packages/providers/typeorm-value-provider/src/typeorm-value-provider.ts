@@ -65,7 +65,11 @@ export class TypeormValueProvider extends ValueProvider {
 
   private maxDate: Date = new Date(0);
 
-  async load(configItems: ConfigItem[]) {
+  async load(inputItems: ConfigItem[]) {
+    const configItems = this.tag
+      ? inputItems.filter((item) => item.tags?.includes(this.tag ?? ''))
+      : inputItems;
+
     this.validateConfigItems(configItems);
 
     const handler = this.on('loaded', (loadedItems) => {

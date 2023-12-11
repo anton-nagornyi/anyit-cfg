@@ -3,8 +3,6 @@
  */
 
 export * from './src/config';
-export * from './src/settings-object';
-export * from './src/shared/deep-readonly';
-export * from './src/shared/null';
-export * from './src/shared/types';
-export * from './src/shared/undefined';
+export * from './src/typeorm-value-provider';
+export * from './src/errors/validation-error';
+export * from './src/models/config-model';

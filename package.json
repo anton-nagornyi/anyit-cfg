@@ -14,5 +14,9 @@
   "bugs": {
     "url": "https://github.com/anton-nagornyi/anyit-cfg/issues"
   },
-  "homepage": "https://github.com/anton-nagornyi/anyit-cfg#readme"
+  "homepage": "https://github.com/anton-nagornyi/anyit-cfg#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3"
+  }
 }

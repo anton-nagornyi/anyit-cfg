@@ -27,6 +27,8 @@ runs:
         mv ../../package.json ../../_package.json
         cp ../../yarn.lock ./yarn.lock
         yarn
+        peerDeps=$(sed -n '/"peerDependencies": {/,/}/p' package.json | grep -v '"peerDependencies": {' | grep -v '}' | sed 's/[:\",]//g' | awk '{print $1 "@" $2"\n"}' | xargs)
+        for dep in $peerDeps; do if [ ! -z "$dep" ]; then echo "Installing peer $dep..."; yarn add "$dep" --peer; fi done ;
         yarn lint
         mv ../../_package.json ../../package.json
         rm -rf ./yarn.lock
@@ -39,6 +41,8 @@ runs:
         mv ../../package.json ../../_package.json
         cp ../../yarn.lock ./yarn.lock
         yarn
+        peerDeps=$(sed -n '/"peerDependencies": {/,/}/p' package.json | grep -v '"peerDependencies": {' | grep -v '}' | sed 's/[:\",]//g' | awk '{print $1 "@" $2"\n"}' | xargs)
+        for dep in $peerDeps; do if [ ! -z "$dep" ]; then echo "Installing peer $dep..."; yarn add "$dep" --peer; fi done ;
         yarn test
         mv ../../_package.json ../../package.json
         rm -rf ./yarn.lock

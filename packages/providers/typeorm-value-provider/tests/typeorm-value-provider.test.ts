@@ -249,6 +249,7 @@ describe('TypeormValueProvider', () => {
         dataSource,
         serviceName: 'test-service',
         createMissingItems: true,
+        serviceVersion: null as any,
         trigger,
       });
 
@@ -274,6 +275,15 @@ describe('TypeormValueProvider', () => {
       let onLoaded: ReturnType<typeof jest.fn>;
 
       beforeEach(async () => {
+        await entityManager.update(
+          ConfigModel,
+          { code: '01H63PAK0Z8B54G4WP3KQ27ZHZ' },
+          {
+            changesCheck: new Date(
+              (provider as any).maxDate.getTime() + 100000,
+            ),
+          },
+        );
         onLoaded = jest.fn();
 
         provider.on('loaded', onLoaded);
@@ -282,22 +292,6 @@ describe('TypeormValueProvider', () => {
 
       it('Then onLoaded is called with correct arguments', () => {
         expect(onLoaded).toBeCalledWith([
-          {
-            providedItem: {
-              code: '01H68DFKSC8KB4NJ319ST1R9B3',
-              default: 'ok',
-              name: 'item1',
-              type: 'string',
-              value: 'ok',
-            },
-            requestedItem: {
-              code: '01H68DFKSC8KB4NJ319ST1R9B3',
-              default: 'ok',
-              name: 'item1',
-              type: 'string',
-              value: 'ok',
-            },
-          },
           {
             providedItem: {
               code: '01H63PAK0Z8B54G4WP3KQ27ZHZ',

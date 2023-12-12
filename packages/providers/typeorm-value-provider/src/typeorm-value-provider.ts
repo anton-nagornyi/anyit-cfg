@@ -44,9 +44,13 @@ export class TypeormValueProvider extends ValueProvider {
     this.trigger = trigger;
     if (this.trigger) {
       this.trigger.on('update', () =>
-        this.loadConfigItems(this.configItems, {
-          changesCheck: MoreThan(this.maxDate),
-        }),
+        this.loadConfigItems(
+          this.configItems,
+          {
+            changesCheck: MoreThan(this.maxDate),
+          },
+          true,
+        ),
       );
     }
   }
@@ -74,17 +78,18 @@ export class TypeormValueProvider extends ValueProvider {
 
     const handler = this.on('loaded', (loadedItems) => {
       this.configItems = loadedItems.map(({ requestedItem }) => requestedItem);
+      this.off('loaded', handler);
     });
 
-    try {
-      await this.loadConfigItems(configItems, {
+    await this.loadConfigItems(
+      configItems,
+      {
         code: In(configItems.map((item) => item.code)),
-      });
+      },
+      false,
+    );
 
-      await this.trigger?.start();
-    } finally {
-      this.off('loaded', handler);
-    }
+    await this.trigger?.start();
   }
 
   private validateConfigItems(configItems: ConfigItem[]) {
@@ -98,6 +103,7 @@ export class TypeormValueProvider extends ValueProvider {
   private async loadConfigItems(
     configItems: ConfigItem[],
     condition: FindOptionsWhere<ConfigModel>,
+    isTriggerCall: boolean,
   ) {
     const itemsMap = new Map<string, ConfigItem>();
 
@@ -120,7 +126,7 @@ export class TypeormValueProvider extends ValueProvider {
       });
     }
 
-    if (this.createMissingItems) {
+    if (this.createMissingItems && !isTriggerCall) {
       await this.createItemsIfNeeded(
         itemsMap,
         loadedItems,

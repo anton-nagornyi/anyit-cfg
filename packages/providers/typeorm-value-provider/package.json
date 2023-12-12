@@ -1,7 +1,7 @@
 {
   "name": "@anyit/cfg-typeorm-value-provider",
   "author": "Anton Nagornyi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/anton-nagornyi/anyit-cfg#readme",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -42,7 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "jest": "^29.6.1",
-    "pg-mem": "^2.6.13",
+    "pg-mem": "^2.7.2",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.73.0",
@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "@anyit/cfg": "*",
-    "typeorm": ">=0.3",
-    "reflect-metadata": ">=0.1.13"
+    "reflect-metadata": ">=0.1.13",
+    "typeorm": ">=0.3"
   }
 }

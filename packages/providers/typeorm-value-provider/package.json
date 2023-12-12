@@ -1,7 +1,7 @@
 {
   "name": "@anyit/cfg-typeorm-value-provider",
   "author": "Anton Nagornyi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/anton-nagornyi/anyit-cfg#readme",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",

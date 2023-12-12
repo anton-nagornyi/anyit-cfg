@@ -249,7 +249,6 @@ describe('TypeormValueProvider', () => {
         dataSource,
         serviceName: 'test-service',
         createMissingItems: true,
-        serviceVersion: null as any,
         trigger,
       });
 

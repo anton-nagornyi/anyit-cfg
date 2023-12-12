@@ -175,19 +175,24 @@ export class Cfg extends SettingsObject {
   };
 
   private valueTypeTransformer(rawValue: any, type: ConfigValueType) {
+    const isType = (value: any, valueType: string) => {
+      return (
+        value === null || value === undefined || typeof value === valueType
+      );
+    };
     switch (type) {
       case 'integer':
         return typeof rawValue === 'number'
           ? Math.trunc(rawValue)
           : Math.trunc(Number(rawValue));
       case 'float':
-        return typeof rawValue === 'number' ? rawValue : Number(rawValue);
+        return isType(rawValue, 'number') ? rawValue : Number(rawValue);
       case 'string':
-        return typeof rawValue === 'string' ? rawValue : rawValue.toString();
+        return isType(rawValue, 'string') ? rawValue : rawValue.toString();
       case 'json':
-        return typeof rawValue === 'object' ? rawValue : JSON.parse(rawValue);
+        return isType(rawValue, 'object') ? rawValue : JSON.parse(rawValue);
       case 'boolean':
-        return typeof rawValue === 'boolean' ? rawValue : rawValue === 'true';
+        return isType(rawValue, 'boolean') ? rawValue : rawValue === 'true';
     }
   }
 

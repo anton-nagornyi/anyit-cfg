@@ -15,7 +15,7 @@ export const Config = Cfg.set({
     envName: 'SERVICE_NAME',
   },
   serviceVersion: {
-    default: '',
+    default: null,
     type: 'string',
   },
 });

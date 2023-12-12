@@ -21,7 +21,7 @@ export type TypeormValueProviderArgs = {
   createMissingItems?: boolean;
   trigger?: ValueProviderTrigger;
   serviceName?: string;
-  serviceVersion?: string;
+  serviceVersion?: string | null;
 } & ValueProviderArgs;
 
 export class TypeormValueProvider extends ValueProvider {
@@ -57,7 +57,7 @@ export class TypeormValueProvider extends ValueProvider {
 
   private readonly serviceName: string;
 
-  private readonly serviceVersion: string;
+  private readonly serviceVersion: string | null;
 
   private readonly config: Repository<ConfigModel>;
 
@@ -173,7 +173,7 @@ export class TypeormValueProvider extends ValueProvider {
   private async createItemsIfNeeded(
     requestedItems: Map<string, ConfigItem>,
     loadedItemsMap: Map<string, { value: any }>,
-    serviceVersion?: string,
+    serviceVersion?: string | null,
   ) {
     const maxDate = new Date();
 

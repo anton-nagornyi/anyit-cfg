@@ -45,14 +45,14 @@ export class Cfg extends SettingsObject {
       return new Promise<void>(async (resolve, reject) => {
         let handler: any;
         try {
-          await provider.load(unloadedItems);
-
           handler = provider.on('loaded', (providedItems) => {
             for (const { requestedItem, providedItem } of providedItems) {
               loadedItems.set(requestedItem, providedItem);
             }
             resolve();
           });
+
+          await provider.load(unloadedItems);
         } catch (e) {
           reject(e);
         } finally {

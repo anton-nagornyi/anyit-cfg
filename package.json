@@ -21,6 +21,6 @@
     "typeorm": "0.3"
   },
   "devDependencies": {
-    "@anyit/be-dev": "^1.0.50"
+    "@anyit/be-dev": "^1.0.51"
   }
 }

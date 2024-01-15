@@ -19,7 +19,7 @@
     "url": "https://github.com/anton-nagornyi/anyit-cfg/issues"
   },
   "devDependencies": {
-    "@anyit/be-dev": "^1.0.50",
+    "@anyit/be-dev": "^1.0.51",
     "@anyit/cfg": "workspace:^",
     "@types/pg": "^8",
     "jest": "^29.7.0",

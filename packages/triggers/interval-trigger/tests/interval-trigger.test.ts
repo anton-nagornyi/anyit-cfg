@@ -1,4 +1,5 @@
 import { IntervalTrigger } from '../src/interval-trigger';
+import '@anyit/be-dev';
 
 jest.useFakeTimers();
 
@@ -9,7 +10,7 @@ describe('Given IntervalTrigger', () => {
     mockEmit.mockClear();
   });
 
-  describe('When IntervalTrigger created', function () {
+  describe('When IntervalTrigger created', () => {
     let trigger: IntervalTrigger;
 
     beforeEach(() => {

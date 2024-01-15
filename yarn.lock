@@ -72,6 +72,10 @@ __metadata:
 "@anyit/cfg-interval-trigger@workspace:packages/triggers/interval-trigger":
   version: 0.0.0-use.local
   resolution: "@anyit/cfg-interval-trigger@workspace:packages/triggers/interval-trigger"
+  dependencies:
+    "@anyit/be-dev": "npm:^1.0.51"
+    "@anyit/cfg": "workspace:^"
+    jest: "npm:^29.7.0"
   peerDependencies:
     "@anyit/cfg": "*"
   languageName: unknown

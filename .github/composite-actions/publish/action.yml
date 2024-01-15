@@ -72,13 +72,5 @@ runs:
       env:
         NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
-        set +e
         yarn build
-        echo ----------------
-        ls ./dist        
-        echo ===================
-        ls ./dist/@types
-        echo ===================
-        ls ./dist/@types/packages
-        exit -1
         yarn npm publish --access=public

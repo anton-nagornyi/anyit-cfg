@@ -41,8 +41,7 @@ export class Cfg extends SettingsObject {
     const loadItemsFromProvider = (
       unloadedItems: ConfigItem[],
       provider: ValueProvider,
-    ) => {
-      return new Promise<void>(async (resolve, reject) => {
+    ) => new Promise<void>(async (resolve, reject) => {
         let handler: any;
         try {
           handler = provider.on('loaded', (providedItems) => {
@@ -61,7 +60,6 @@ export class Cfg extends SettingsObject {
           }
         }
       });
-    };
 
     for (const provider of providers) {
       provider.off('loaded', this.updateLoadedItems);
@@ -175,11 +173,10 @@ export class Cfg extends SettingsObject {
   };
 
   private valueTypeTransformer(rawValue: any, type: ConfigValueType) {
-    const isType = (value: any, valueType: string) => {
-      return (
+    const isType = (value: any, valueType: string) => (
+      // eslint-disable-next-line valid-typeof
         value === null || value === undefined || typeof value === valueType
       );
-    };
     switch (type) {
       case 'integer':
         return typeof rawValue === 'number'

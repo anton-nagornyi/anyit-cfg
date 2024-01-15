@@ -1,5 +1,5 @@
 name: Publish
-description: "Run publish "
+description: "Run publish"
 
 inputs:
   working-directory:
@@ -12,37 +12,34 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
-        node-version: 16.15.0
+        node-version: 18.18.2
+
+    - name: Install
+      id: install
+      shell: bash
+      run: |
+        yarn config set -H enableImmutableInstalls false 
+        yarn
 
     - name: Lint
       id: check-eslint
       working-directory: ${{inputs.working-directory}}
       shell: bash
       run: |
-        mv ../../package.json ../../_package.json
-        cp ../../yarn.lock ./yarn.lock
-        yarn
-        yarn lint
-        mv ../../_package.json ../../package.json
-        rm -rf ./yarn.lock
+        yarn lint:check
 
     - name: Test
       id: check-tests
       working-directory: ${{inputs.working-directory}}
       shell: bash
       run: |
-        mv ../../package.json ../../_package.json
-        cp ../../yarn.lock ./yarn.lock
-        yarn
         yarn test
-        mv ../../_package.json ../../package.json
-        rm -rf ./yarn.lock
-        
+
     - name: Read Package Name from package.json
       id: package-json-name
       working-directory: ${{inputs.working-directory}}
@@ -64,9 +61,9 @@ runs:
       env:
         NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
-        echo '//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}' > .npmrc
-        echo '@anyit:registry=https://registry.npmjs.org/' >> .npmrc
-        npm config set --global '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
+        echo 'npmAlwaysAuth: true' >> .yarnrc.yml
+        echo 'npmAuthToken: "${NPM_AUTH_TOKEN}"' >> .yarnrc.yml
+        echo 'npmRegistryServer: "https://registry.npmjs.org/"' >> .yarnrc.yml
 
     - name: Build & Publish
       id: run-yarn-publish
@@ -75,11 +72,5 @@ runs:
       env:
         NPM_AUTH_TOKEN: ${{inputs.npm-auth-token}}
       run: |
-        mv ../../package.json ../../_package.json
-        cp ../../yarn.lock ./yarn.lock
-        yarn
         yarn build
-        yarn publish --new-version ${{ env.VERSION }} --access=public
-        mv ../../_package.json ../../package.json
-        rm -rf ./yarn.lock
-        yarn info ${{ env.PACKAGE_NAME }}@${{ env.VERSION }}
+        yarn npm publish --access=public

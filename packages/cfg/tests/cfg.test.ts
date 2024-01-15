@@ -1,7 +1,7 @@
 import { Cfg } from '../src/cfg';
 import { ConfigItem } from '../src/shared/types';
-import * as process from 'process';
 import { ValueProvider } from '../src/value-provider';
+import '@anyit/be-dev';
 
 describe('Given Config', () => {
   describe('When no environment variables is provided', () => {
@@ -224,11 +224,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             code: undefined,
             default: 'old value',
@@ -243,11 +243,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith(
+        expect(onSet).toHaveBeenCalledWith(
           expect.objectContaining({
             code: undefined,
             default: 'old value',
@@ -300,11 +300,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           expect.objectContaining({
             code: undefined,
             default: 2,
@@ -319,11 +319,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith(
+        expect(onSet).toHaveBeenCalledWith(
           expect.objectContaining({
             code: undefined,
             default: 2,
@@ -378,7 +378,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called correct number of times', () => {
-        expect(onChange).toBeCalledTimes(2);
+        expect(onChange).toHaveBeenCalledTimes(2);
       });
 
       it('Then onChange is called with the correct args', () => {
@@ -409,7 +409,7 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called correct number of times', () => {
-        expect(onSet).toBeCalledTimes(2);
+        expect(onSet).toHaveBeenCalledTimes(2);
       });
 
       it('Then onSet is called with the correct args', () => {
@@ -482,7 +482,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called correct number of times', () => {
-        expect(onChange).toBeCalledTimes(2);
+        expect(onChange).toHaveBeenCalledTimes(2);
       });
 
       it('Then onChange is called with the correct args', () => {
@@ -513,7 +513,7 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called correct number of times', () => {
-        expect(onSet).toBeCalledTimes(2);
+        expect(onSet).toHaveBeenCalledTimes(2);
       });
 
       it('Then onSet is called with the correct args', () => {
@@ -592,11 +592,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 'string',
           envName: undefined,
@@ -608,11 +608,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called the correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           {
             code: undefined,
             default: 'string',
@@ -633,11 +633,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 'string',
           envName: undefined,
@@ -649,7 +649,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is not called', () => {
-        expect(onChange).toBeCalledTimes(0);
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
     });
 
@@ -659,11 +659,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 5,
           envName: undefined,
@@ -675,11 +675,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called the correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           {
             code: undefined,
             default: 5,
@@ -700,11 +700,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 5,
           envName: undefined,
@@ -716,7 +716,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is not called', () => {
-        expect(onChange).toBeCalledTimes(0);
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
     });
 
@@ -726,11 +726,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 2.7,
           envName: undefined,
@@ -742,11 +742,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called the correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           {
             code: undefined,
             default: 2.7,
@@ -767,11 +767,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: 2.7,
           envName: undefined,
@@ -783,7 +783,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is not called', () => {
-        expect(onChange).toBeCalledTimes(0);
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
     });
 
@@ -793,11 +793,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: true,
           envName: undefined,
@@ -809,11 +809,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called the correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           {
             code: undefined,
             default: true,
@@ -834,11 +834,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: true,
           envName: undefined,
@@ -850,7 +850,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is not called', () => {
-        expect(onChange).toBeCalledTimes(0);
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
     });
 
@@ -860,11 +860,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: { a: 22 },
           envName: undefined,
@@ -876,11 +876,11 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is called the correct number of times', () => {
-        expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
       });
 
       it('Then onChange is called with the correct args', () => {
-        expect(onChange).toBeCalledWith(
+        expect(onChange).toHaveBeenCalledWith(
           {
             code: undefined,
             default: { a: 22 },
@@ -901,11 +901,11 @@ describe('Given Config', () => {
       });
 
       it('Then onSet is called the correct number of times', () => {
-        expect(onSet).toBeCalledTimes(1);
+        expect(onSet).toHaveBeenCalledTimes(1);
       });
 
       it('Then onSet is called with the correct args', () => {
-        expect(onSet).toBeCalledWith({
+        expect(onSet).toHaveBeenCalledWith({
           code: undefined,
           default: { a: 22 },
           envName: undefined,
@@ -917,7 +917,7 @@ describe('Given Config', () => {
       });
 
       it('Then onChange is not called', () => {
-        expect(onChange).toBeCalledTimes(0);
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
     });
   });

@@ -1,4 +1,5 @@
 import { EnvValueProvider } from '../src/env-value-provider';
+import '@anyit/be-dev';
 
 describe('Given EnvValueProvider', () => {
   let provider: EnvValueProvider;

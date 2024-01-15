@@ -5,12 +5,13 @@
       "packages/**/*"
     ]
   },
+  "packageManager": "yarn@4.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anton-nagornyi/anyit-cfg.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/anton-nagornyi/anyit-cfg/issues"
   },
@@ -18,5 +19,8 @@
   "dependencies": {
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.3"
+  },
+  "devDependencies": {
+    "@anyit/be-dev": "^1.0.49"
   }
 }

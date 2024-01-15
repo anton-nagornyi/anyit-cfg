@@ -1,4 +1,5 @@
 import { deepEqual } from '../src/shared/deep-equal';
+import '@anyit/be-dev';
 
 describe('When deepEqual', () => {
   it('Then return true for equal objects', () => {

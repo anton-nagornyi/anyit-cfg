@@ -1,3 +1,9 @@
 ﻿node_modules
 .idea
 dist
+.vscode
+.run
+.yarn/install-state.gz
+.yarn/sdks
+.pnp.cjs
+.pnp.loader.mjs

@@ -4,8 +4,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Config } from '../config';
 import { ConfigValueType } from '@anyit/cfg';
+import { Config } from '../config';
 
 @Entity(Config.tableName)
 export class ConfigModel {

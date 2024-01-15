@@ -1,10 +1,10 @@
 import { newDb } from 'pg-mem';
 import { DataSource, EntityManager, Repository } from 'typeorm';
-
+import { ValueProviderTrigger } from '@anyit/cfg';
 import { ConfigModel } from '../src/models/config-model';
 import { TypeormValueProvider } from '../src/typeorm-value-provider';
 import { ValidationError } from '../src/errors/validation-error';
-import { ValueProviderTrigger } from '@anyit/cfg';
+import '@anyit/be-dev';
 
 describe('TypeormValueProvider', () => {
   let disconnect: Function;
@@ -47,7 +47,7 @@ describe('TypeormValueProvider', () => {
     await disconnect();
   });
 
-  describe('When no trigger is set', function () {
+  describe('When no trigger is set', () => {
     let provider: TypeormValueProvider;
 
     beforeEach(() => {
@@ -234,7 +234,7 @@ describe('TypeormValueProvider', () => {
     let provider: TypeormValueProvider;
     class Trigger extends ValueProviderTrigger {
       async start() {
-        await new Promise((resolve) => setTimeout(resolve, 2));
+        await new Promise((resolve) => {setTimeout(resolve, 2);});
         await this.emit('update');
       }
 

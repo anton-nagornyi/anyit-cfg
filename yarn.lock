@@ -22,9 +22,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@anyit/be-dev@npm:^1.0.49":
-  version: 1.0.49
-  resolution: "@anyit/be-dev@npm:1.0.49"
+"@anyit/be-dev@npm:^1.0.50":
+  version: 1.0.50
+  resolution: "@anyit/be-dev@npm:1.0.50"
   dependencies:
     "@rollup/plugin-typescript": "npm:^11.1.5"
     "@types/node": "npm:^20.10.5"
@@ -65,7 +65,7 @@ __metadata:
     rollup: ./bin/proxy-rollup.js
     test: ./bin/test.js
     "version:bump": ./bin/version-bump.js
-  checksum: 8bfc2bed33e193b4d70b9b3c8d7f2ef269df54419280db96b8491a2fd6849e7f97be7bf2754e0da7b614f7d16c9c92a61df2f63b8934b1ed8d3fb47c2b5fb6e1
+  checksum: 51c3605e38922d031b30792bea4700f469ad3edf783d77a651f7f538f7441a23e8b8425c7f8aa09b1671669e6a3c8875714326803071bf791c0c9df1478660a2
   languageName: node
   linkType: hard
 
@@ -81,7 +81,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@anyit/cfg-typeorm-value-provider@workspace:packages/providers/typeorm-value-provider"
   dependencies:
-    "@anyit/be-dev": "npm:^1.0.49"
+    "@anyit/be-dev": "npm:^1.0.50"
     "@anyit/cfg": "workspace:^"
     "@types/pg": "npm:^8"
     jest: "npm:^29.7.0"
@@ -99,7 +99,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@anyit/cfg@workspace:packages/cfg"
   dependencies:
-    "@anyit/be-dev": "npm:^1.0.49"
+    "@anyit/be-dev": "npm:^1.0.50"
     jest: "npm:^29.7.0"
   languageName: unknown
   linkType: soft
@@ -7357,7 +7357,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@anyit/be-dev": "npm:^1.0.49"
+    "@anyit/be-dev": "npm:^1.0.50"
     reflect-metadata: "npm:^0.1.13"
     typeorm: "npm:0.3"
   languageName: unknown

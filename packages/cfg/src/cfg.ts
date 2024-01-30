@@ -97,7 +97,7 @@ export class Cfg extends SettingsObject {
         this.items.push(parsedItem);
         this.itemsMap.set(parsedItem.name, parsedItem);
       } else {
-        this.parseConfigItems(configItem, name);
+        this.parseConfigItems(configItem, [rootName, name].filter((item) => item).join(':'));
       }
     });
   }
@@ -131,7 +131,7 @@ export class Cfg extends SettingsObject {
   }
 
   private getItemInfo(root: SettingsObject, configItem: ConfigItem) {
-    const anyRoot = root as any;
+    let anyRoot = root as any;
     const path = configItem.name.split(':');
 
     let container;
@@ -141,6 +141,7 @@ export class Cfg extends SettingsObject {
         anyRoot[key] = new SettingsObject();
       }
       container = anyRoot[key];
+      anyRoot = container;
     }
     return { container: container ?? root, key: path[path.length - 1] };
   }
